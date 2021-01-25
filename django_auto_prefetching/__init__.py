@@ -84,7 +84,7 @@ def _prefetch(
         )
         # 20210124 - Quick workaround for source defined as a function
         try:
-          if callable(getattr(a, "sponsoring_strlist")):
+          if callable(getattr(serializer.Meta.model, field_instance.source)):
             continue
         except:
           pass
