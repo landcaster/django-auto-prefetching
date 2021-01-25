@@ -83,8 +83,13 @@ def _prefetch(
             f'{" " * indentation} Field "{name}", type: {field_type_name}, src: "{field_instance.source}"'
         )
         # 20210124 - Quick workaround for source defined as a function
-        if name != field_instance.source:
+        try:
+          if callable(getattr(a, "sponsoring_strlist")):
             continue
+        except:
+          pass
+        #if name != field_instance.source:
+        #    continue
 
         # We potentially need to recurse deeper
         if isinstance(
